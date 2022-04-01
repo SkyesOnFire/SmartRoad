@@ -1,11 +1,25 @@
 package marketplacebr.springfy.Vehicle.Entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "VEHICLE")
 public class Vehicle {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @Column(name = "BRAND", nullable = false)
     private String brand;
+
+    @Column(name = "MODEL", nullable = false)
     private String model;
+
+    @Column(name = "PLATE", unique = true, nullable = false)
     private String plate;
+
+    @Column(name = "RENAVAM", unique = true, nullable = false)
     private String brRenavam;
 
     public Integer getId() {
