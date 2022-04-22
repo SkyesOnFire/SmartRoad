@@ -1,0 +1,36 @@
+{
+  "name": "SmartRoad",
+  "short_name": "SmartRoad",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#66b24e",
+  "background_color": "#fafbfd",
+  "icons": [
+    {
+      "src": "/favicon/cropped-logo-quadrada-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/cropped-logo-quadrada-180x180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/cropped-logo-quadrada-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/cropped-logo-quadrada-270x270.png",
+      "sizes": "270x270",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
