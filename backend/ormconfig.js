@@ -1,10 +1,10 @@
 module.exports = {
-  "type": process.env.NODE_ENV === 'prod' ? process.env.DB_TYPE : 'mysql',
-  "host": process.env.NODE_ENV === 'prod' ? process.env.DB_HOST : 'localhost',
-  "port": process.env.NODE_ENV === 'prod' ? process.env.DB_PORT : 3306,
-  "username": process.env.NODE_ENV === 'prod' ? process.env.DB_USER : 'root',
-  "password": process.env.NODE_ENV === 'prod' ? process.env.DB_PASS : 'root',
-  "database": process.env.NODE_ENV === 'prod' ? process.env.DB_DB : 'db',
+  "type": process.env.NODE_ENV === 'prod' ? process.env.DB_TYPE : 'postgres',
+  "host": process.env.NODE_ENV === 'prod' ? process.env.DB_HOST : 'db',
+  "port": process.env.NODE_ENV === 'prod' ? process.env.DB_PORT : 5432,
+  "username": process.env.NODE_ENV === 'prod' ? process.env.DB_USER : 'postgres',
+  "password": process.env.NODE_ENV === 'prod' ? process.env.DB_PASS : 'postgres',
+  "database": process.env.NODE_ENV === 'prod' ? process.env.DB_DB : 'smartroad',
   "entities": process.env.NODE_ENV === 'prod' ? [
     "./build/modules/**/infra/typeorm/entities/*.js"
   ] : [

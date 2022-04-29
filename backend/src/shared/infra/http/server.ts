@@ -18,8 +18,6 @@ import routes from './routes';
 import '@shared/infra/typeorm';
 import '@shared/container';
 
-import cron from 'node-cron';
-
 dotenv.config();
 const app = express();
 

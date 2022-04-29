@@ -15,7 +15,7 @@ usuariosRouter.get(
 
 usuariosRouter.get('/', ensureAuthenticated, usuariosController.getall);
 
-usuariosRouter.post('/', ensureAuthenticated, usuariosController.create);
+usuariosRouter.post('/', usuariosController.create);
 
 usuariosRouter.put(
   '/usuario/:id',

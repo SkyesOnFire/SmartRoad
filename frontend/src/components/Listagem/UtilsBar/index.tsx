@@ -178,7 +178,7 @@ const UtilsBar: React.FC<IProps> = props => {
             filename={`${module}-${format(
               new Date(),
               'dd-MM-yy-hh-mm'
-            )}-insys.csv`}
+            )}-sistema.csv`}
           >
             <FaFileCsv size={20} />
           </UtilCSV>
