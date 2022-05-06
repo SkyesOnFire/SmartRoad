@@ -20,7 +20,7 @@ Runs the app in the production mode.
 
 ## What you need to run
 
-A database instance running in your pc or in the cloud.
+A database instance running in your pc or in the cloud. (to execute and create the tables run `yarn typeorm migration:run`)
 Edit ormconfig.json with the database credentials.
 If windows, you need to install ` yarn global add win-node-env`
 

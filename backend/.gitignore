@@ -5,6 +5,8 @@ build/
 temp/
 dist/
 
+db/
+
 tmp/*
 !tmp/uploads/.gitkeep
 !tmp/.gitkeep
@@ -19,6 +21,8 @@ yarn-error.log
 
 *debug.log*
 
-!ormconfig.json
-ormconfig.dev.json
+ormconfig.json
+!ormconfig.dev.json
 ormconfig.prod.json
+
+.DS_Store
