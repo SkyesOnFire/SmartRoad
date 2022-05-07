@@ -19,7 +19,6 @@ class GetOneUsuarioService {
     }
 
     usuario.senha = '';
-    usuario.departamentos = await usuario.departamentos;
 
     return usuario;
   }

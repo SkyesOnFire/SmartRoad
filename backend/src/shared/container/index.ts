@@ -11,6 +11,9 @@ import TagsRepository from '@modules/tags/infra/typeorm/repositories/TagsReposit
 import ILeiturasRepository from '@modules/leituras/repositories/ILeiturasRepository';
 import LeiturasRepository from '@modules/leituras/infra/typeorm/repositories/LeiturasRepository';
 
+import IVeiculosRepository from '@modules/veiculos/repositories/IVeiculosRepository';
+import VeiculosRepository from '@modules/veiculos/infra/typeorm/repositories/VeiculosRepository';
+
 
 container.registerSingleton<IUsuariosRepository>(
   'UsuariosRepository',
@@ -25,5 +28,10 @@ container.registerSingleton<ILeiturasRepository>(
 container.registerSingleton<ITagsRepository>(
   'TagsRepository',
   TagsRepository,
+);
+
+container.registerSingleton<IVeiculosRepository>(
+  'VeiculosRepository',
+  VeiculosRepository,
 );
 
