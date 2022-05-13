@@ -37,8 +37,8 @@ export default createGlobalStyle`
     --tertiary-shadow: rgb(159 188 223 / 30%);
     --quaternary-shadow: rgb(82 63 49 / 30%);
 
-    --layout-items-size: 9rem;
-    --layout-mobile-items-size: 6rem;
+    --layout-items-size: 4.5rem;
+    --layout-mobile-items-size: 3rem;
 
     --sidebar-bg: var(--quaternary-color);
     --text-sidebar: var(--text-color-0);

@@ -40,8 +40,8 @@ export const HeaderHolder = styled.header<Header>`
   }
 `;
 
-export const Header1Holder = styled.div`
-  height: 50%;
+export const HeaderContainer = styled.div`
+  height: 100%;
   width: 100%;
 
   box-shadow: 0 0 5px var(--shadow-color);
@@ -239,80 +239,6 @@ export const SignOutHolder = styled.div`
       color: var(--text-color);
       cursor: pointer;
     }
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-export const Header2Holder = styled.div`
-  height: 50%;
-  width: 100%;
-
-  padding-right: 50px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-export const TasksHolder = styled.div`
-  height: 100%;
-  width: auto;
-  min-width: 250px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: var(--main-color);
-
-  &.warn {
-    background-color: var(--error-color);
-  }
-
-  svg,
-  span {
-    color: var(--text-color-1);
-  }
-
-  span {
-    margin-left: 10px;
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-export const WarningTaskInfo = styled.div`
-  height: 100%;
-  flex: 1 1;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-
-  padding: 0 0 0 15px;
-
-  strong {
-    font-size: 1.2rem;
-    color: var(--text-color-2);
-    font-weight: 600;
-
-    text-transform: uppercase;
-  }
-
-  button {
-    font-size: 0.95rem;
-    color: var(--text-color-2);
-    font-weight: 300;
   }
 
   @media (max-width: 768px) {
