@@ -16,7 +16,7 @@ COPY . .
 RUN yarn build
 
 # Run migrations
-# RUN ./node_modules/.bin/typeorm migration:run
+#RUN ./node_modules/.bin/typeorm migration:run
 
 # Remove unused src directory
 RUN rm -rf src/

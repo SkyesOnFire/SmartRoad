@@ -4,6 +4,7 @@ node_modules/
 build/
 temp/
 dist/
+db/
 
 tmp/*
 !tmp/uploads/.gitkeep
@@ -18,3 +19,4 @@ ormconfig.json
 ormconfig.dev.json
 ormconfig.prod.json
 
+.DS_Store
