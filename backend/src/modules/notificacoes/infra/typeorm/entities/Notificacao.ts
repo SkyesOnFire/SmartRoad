@@ -1,11 +1,9 @@
-import Tag from '@modules/tags/infra/typeorm/entities/Tag';
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
 } from 'typeorm';
 
 @Entity('notificacoes')
