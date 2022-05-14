@@ -7,7 +7,7 @@ import { Container } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  icon?: React.ComponentType<IconBaseProps>;
+  icon?: any;
   iconSize?: number;
   row?: boolean;
   options: {

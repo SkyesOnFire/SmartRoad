@@ -12,7 +12,7 @@ import { Container, Error } from './styles';
 
 interface Props extends SelectProps<OptionTypeBase> {
   name: string;
-  icon?: React.ComponentType<IconBaseProps>;
+  icon?: any;
   iconSize?: number;
   options: ISelectDTO[];
   disabled?: boolean;
@@ -93,7 +93,7 @@ const Select: React.FC<Props> = ({
         ref={selectRef}
         styles={{
           // Fixes the overlapping problem of the component
-          menu: provided => ({
+          menu: (provided: any) => ({
             ...provided,
             zIndex: 9999,
           }),

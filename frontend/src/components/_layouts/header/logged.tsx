@@ -6,7 +6,6 @@ import { FaClock, FaSignOutAlt } from 'react-icons/fa';
 import Logo from 'assets/cropped-logo.png';
 import UserDefault from 'assets/userDefault.png';
 
-import NotificacoesModal from 'components/NotificacoesModal';
 import { FaBell } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
 import { formatBRDate, formatHour } from 'utils/formatData';
@@ -37,7 +36,6 @@ const HeaderLogged: React.FC<IProps> = props => {
   const userNotificacoes: any[] = [];
 
   const [active, setActive] = useState<boolean>(true);
-  const [update, setUpdate] = useState<boolean>(false);
   const [date, setDate] = useState<Date | undefined>(undefined);
 
   const { usuario } = useAuth();
@@ -51,19 +49,19 @@ const HeaderLogged: React.FC<IProps> = props => {
     setDate(tempDate);
   }, [active]);
 
-  useEffect(() => {
-    document.addEventListener(
-      'visibilitychange',
-      () => {
-        if (document.hidden) {
-          setActive(false);
-        } else {
-          setActive(true);
-        }
-      },
-      false
-    );
-  }, []);
+  // useEffect(() => {
+  //   document.addEventListener(
+  //     'visibilitychange',
+  //     () => {
+  //       if (document.hidden) {
+  //         setActive(false);
+  //       } else {
+  //         setActive(true);
+  //       }
+  //     },
+  //     false
+  //   );
+  // }, []);
 
   process.env.NODE_ENV !== 'development' &&
     active &&
@@ -108,14 +106,14 @@ const HeaderLogged: React.FC<IProps> = props => {
         </UserHolder>
         <Separator />
         <NotificationHolder>
-          <NotificacoesModal
+          {/* <NotificacoesModal
             update={update}
             setUpdate={setUpdate}
             notificacoes={userNotificacoes}
-          >
-            <FaBell size={18} />
-            <NotificacaoNumber>{userNotificacoes.length}</NotificacaoNumber>
-          </NotificacoesModal>
+          > */}
+          <FaBell size={18} />
+          <NotificacaoNumber>{userNotificacoes.length}</NotificacaoNumber>
+          {/* </NotificacoesModal> */}
         </NotificationHolder>
         <Separator />
         <DateHolder>

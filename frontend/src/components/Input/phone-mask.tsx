@@ -8,7 +8,7 @@ import { Container, Error } from './styles';
 
 interface InputProps extends Props {
   name: string;
-  icon?: React.ComponentType<IconBaseProps>;
+  icon?: any;
   iconSize?: number;
   mask: string;
   readonly?: boolean;

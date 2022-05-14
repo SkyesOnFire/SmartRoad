@@ -12,7 +12,7 @@ export const HeaderHolder = styled.header<Header>`
   ${props =>
     props.isSidebarOpened
       ? css`
-          width: calc(100vw - var(--layout-items-size));
+          width: calc(100vw - calc(var(--layout-items-size) * 2));
         `
       : css`
           width: 100vw;

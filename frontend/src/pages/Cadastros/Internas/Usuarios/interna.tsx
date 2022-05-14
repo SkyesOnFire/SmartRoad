@@ -9,7 +9,7 @@ import api from 'services/api';
 import FormConstructor, { IInput, ISaveBtn } from 'components/FormConstructor';
 import getValidationErrors from 'utils/getValidationErrors';
 import ManyToManyModal from 'components/ManyToManyModal';
-import { IDepartamentosDTO, ISelectDTO } from 'utils/DTOS';
+import { ISelectDTO } from 'utils/DTOS';
 
 import Spinner from 'components/Spinner';
 import {
@@ -37,46 +37,7 @@ const UsuariosInterna: React.FC = () => {
   const [update, setUpdate] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any | undefined>(undefined);
-  const [departamentoUsuario, setDepartamentoUsuario] = useState<ISelectDTO[]>(
-    []
-  );
-  const [departamentos, setDepartamentos] = useState<ISelectDTO[]>([]);
   const { addToast } = useToast();
-
-  const getDepartamentos = useCallback(async () => {
-    await api
-      .get('/departamentos')
-      .then(async (res: AxiosResponse) => {
-        const tmp: IDepartamentosDTO[] = res.data;
-        const final: ISelectDTO[] = [];
-
-        for (let i = 0; i < tmp.length; i++) {
-          const tmp1 = tmp[i];
-
-          final.push({
-            label: tmp1.nome,
-            value: tmp1.id.toString(),
-          });
-        }
-
-        setDepartamentos(final);
-      })
-      .catch((err: AxiosError) => {
-        addToast({
-          type: 'error',
-          title:
-            typeof err.response?.data.message === 'string'
-              ? err.response?.data.message
-              : 'Ocorreu um erro',
-          description: `Ocorreu um erro ao buscar os departamentos, tente novamente.`,
-        });
-        console.error(`Erro: ${err}`);
-      });
-  }, [addToast, update]);
-
-  useEffect(() => {
-    getDepartamentos();
-  }, [getDepartamentos]);
 
   const saveBtn: ISaveBtn = {
     label: 'Enviar',
@@ -188,29 +149,6 @@ const UsuariosInterna: React.FC = () => {
     get();
   }, [get]);
 
-  const getDepartamentoFromUsuario = useCallback(() => {
-    if (!data) {
-      return;
-    }
-    const tmp: IDepartamentosDTO[] = data.__departamentos__;
-    const final: ISelectDTO[] = [];
-
-    for (let i = 0; i < tmp.length; i++) {
-      const tmp1 = tmp[i];
-
-      final.push({
-        label: tmp1.nome,
-        value: tmp1.id.toString(),
-      });
-    }
-
-    setDepartamentoUsuario(final);
-  }, [data, update]);
-
-  useEffect(() => {
-    getDepartamentoFromUsuario();
-  }, [getDepartamentoFromUsuario]);
-
   const handleSubmit = useCallback(
     async (dat: any) => {
       try {
@@ -258,7 +196,7 @@ const UsuariosInterna: React.FC = () => {
             });
             console.error(`Erro: ${err}`);
           });
-      } catch (err) {
+      } catch (err: any) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
@@ -282,23 +220,6 @@ const UsuariosInterna: React.FC = () => {
     <Container>
       {data ? (
         <>
-          <HeaderHolder style={{ gridTemplateColumns: '300px' }}>
-            <HeaderItem className="full">
-              <ManyToManyModal
-                module="usuario"
-                relation="departamento"
-                addUrl="/departamentos/adicionar-usuario"
-                removeUrl="/departamentos/remover-usuario"
-                actual_relations={departamentoUsuario}
-                relations={departamentos}
-                module_id={data.id.toString()}
-                setUpdate={setUpdate}
-                update={update}
-              >
-                <ModalOpener>Gerenciar Departamentos</ModalOpener>
-              </ManyToManyModal>
-            </HeaderItem>
-          </HeaderHolder>
           <BodyHolder style={{ marginTop: 60 }}>
             <TitleHolder>
               {module_label} #{id}:

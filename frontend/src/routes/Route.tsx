@@ -14,7 +14,7 @@ import { useAuth } from '../hooks/auth';
 interface RouteProps extends ReactDOMRouteProps {
   isPrivate?: boolean;
   isAdmin?: boolean;
-  component: React.ComponentType;
+  component: any;
 }
 
 const Route: React.FC<RouteProps> = ({
@@ -30,7 +30,7 @@ const Route: React.FC<RouteProps> = ({
 
   if (usuario) {
     switch (usuario.cod_perfil) {
-      case 1:
+      case 2:
         admin = true;
         break;
       default:

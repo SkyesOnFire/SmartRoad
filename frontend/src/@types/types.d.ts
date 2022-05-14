@@ -17,8 +17,3 @@ declare module 'react-currency-input' {
   const props: any;
   export default props;
 }
-
-declare module 'react-export-excel' {
-  const props: any;
-  export default props;
-}

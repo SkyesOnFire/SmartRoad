@@ -13,7 +13,7 @@ export const SidebarHolder = styled.aside<Sidebar>`
   ${props =>
     props.open
       ? css`
-          width: var(--layout-items-size);
+          width: calc(var(--layout-items-size) * 2);
         `
       : css`
           width: 0px;
