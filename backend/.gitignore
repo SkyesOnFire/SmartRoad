@@ -21,8 +21,8 @@ yarn-error.log
 
 *debug.log*
 
-ormconfig.json
-!ormconfig.dev.json
-ormconfig.prod.json
+ormconfig.*
+!ormconfig.dev.*
+!ormconfig.prod.*
 
 .DS_Store
