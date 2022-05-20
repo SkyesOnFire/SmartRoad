@@ -90,6 +90,7 @@ const HeaderLogged: React.FC<IProps> = props => {
         <Separator />
         <LogoHolder>
           <img src={Logo} alt="SmartRoad - Logo" />
+          <h1>SmartRoad</h1>
         </LogoHolder>
         <UserHolder>
           <span>

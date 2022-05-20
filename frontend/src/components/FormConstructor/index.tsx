@@ -34,7 +34,7 @@ export interface IInput {
   required?: boolean;
   selectData?: ISelectDTO[];
   mask?: string | Array<string | RegExp>;
-  style?: React.CSSProperties;
+  style?: any;
   marked?: boolean;
   className?: string;
   onBlurFnc?: (e: any) => void;

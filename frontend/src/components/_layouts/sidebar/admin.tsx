@@ -33,36 +33,6 @@ const Sidebar: React.FC<IProps> = props => {
         </NavItem>
         <NavItem
           onClick={() => {
-            history.push('/projetos');
-          }}
-          type="button"
-          id="projetos"
-        >
-          <HiOutlineClipboardList size={20} />
-          <span>Projetos</span>
-        </NavItem>
-        <NavItem
-          onClick={() => {
-            history.push('/financeiro');
-          }}
-          type="button"
-          id="financeiro"
-        >
-          <GiMoneyStack size={20} />
-          <span>Financeiro</span>
-        </NavItem>
-        <NavItem
-          onClick={() => {
-            history.push('/tarefas');
-          }}
-          type="button"
-          id="tarefas"
-        >
-          <FaTasks size={20} />
-          <span>Tarefas</span>
-        </NavItem>
-        <NavItem
-          onClick={() => {
             history.push('/cadastros');
           }}
           type="button"
