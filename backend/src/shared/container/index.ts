@@ -14,6 +14,12 @@ import LeiturasRepository from '@modules/leituras/infra/typeorm/repositories/Lei
 import IVeiculosRepository from '@modules/veiculos/repositories/IVeiculosRepository';
 import VeiculosRepository from '@modules/veiculos/infra/typeorm/repositories/VeiculosRepository';
 
+import ILocaisRepository from '@modules/locais/repositories/ILocaisRepository';
+import LocaisRepository from '@modules/locais/infra/typeorm/repositories/LocaisRepository';
+
+import INotificacoesRepository from '@modules/notificacoes/repositories/INotificacoesRepository';
+import NotificacoesRepository from '@modules/notificacoes/infra/typeorm/repositories/NotificacoesRepository';
+
 
 container.registerSingleton<IUsuariosRepository>(
   'UsuariosRepository',
@@ -33,5 +39,15 @@ container.registerSingleton<ITagsRepository>(
 container.registerSingleton<IVeiculosRepository>(
   'VeiculosRepository',
   VeiculosRepository,
+);
+
+container.registerSingleton<ILocaisRepository>(
+  'LocaisRepository',
+  LocaisRepository,
+);
+
+container.registerSingleton<INotificacoesRepository>(
+  'NotificacoesRepository',
+  NotificacoesRepository,
 );
 

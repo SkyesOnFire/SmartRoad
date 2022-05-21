@@ -1,10 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { GiMoneyStack } from 'react-icons/gi';
 import { AiOutlineHome } from 'react-icons/ai';
-import { FaTasks, FaWpforms } from 'react-icons/fa';
-import { HiOutlineClipboardList } from 'react-icons/hi';
+import { FaWpforms } from 'react-icons/fa';
 
 import { BsArrowReturnLeft } from 'react-icons/bs';
 import { SidebarHolder, Nav, NavItem } from './styled';
@@ -30,36 +28,6 @@ const Sidebar: React.FC<IProps> = props => {
         >
           <AiOutlineHome size={20} />
           <span>Início</span>
-        </NavItem>
-        <NavItem
-          onClick={() => {
-            history.push('/projetos');
-          }}
-          type="button"
-          id="projetos"
-        >
-          <HiOutlineClipboardList size={20} />
-          <span>Projetos</span>
-        </NavItem>
-        <NavItem
-          onClick={() => {
-            history.push('/financeiro');
-          }}
-          type="button"
-          id="financeiro"
-        >
-          <GiMoneyStack size={20} />
-          <span>Financeiro</span>
-        </NavItem>
-        <NavItem
-          onClick={() => {
-            history.push('/tarefas');
-          }}
-          type="button"
-          id="tarefas"
-        >
-          <FaTasks size={20} />
-          <span>Tarefas</span>
         </NavItem>
         <NavItem
           onClick={() => {

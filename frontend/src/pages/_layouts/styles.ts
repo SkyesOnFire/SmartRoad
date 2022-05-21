@@ -19,7 +19,7 @@ export const Container = styled.div<IContainer>`
   ${props =>
     props.isSidebarOpen
       ? css`
-          width: calc(100% - var(--layout-items-size));
+          width: calc(100% - calc(var(--layout-items-size) * 2));
         `
       : css`
           width: 100%;

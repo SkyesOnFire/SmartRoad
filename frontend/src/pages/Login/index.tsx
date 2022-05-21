@@ -52,7 +52,7 @@ const Login: React.FC = () => {
           cpf: data.cpf,
           senha: data.senha,
         });
-      } catch (err) {
+      } catch (err: any) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
@@ -82,7 +82,7 @@ const Login: React.FC = () => {
         <AnimatedForm>
           <FormHeader>
             <img src={Logo} alt="Logo" />
-            <h1>Seja bem vindo!</h1>
+            <h1>Seja bem vindo(a)!</h1>
           </FormHeader>
           <FormBody>
             <label htmlFor="cpf">CPF</label>

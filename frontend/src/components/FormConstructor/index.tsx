@@ -1,8 +1,6 @@
 import { FormHandles, SubmitHandler } from '@unform/core';
 import React, { useCallback } from 'react';
 import { ISelectDTO } from 'utils/DTOS';
-import { v4 } from 'uuid';
-
 import Input from 'components/Input';
 import Select from 'components/Select';
 import Textarea from 'components/Input/textarea';
@@ -36,7 +34,7 @@ export interface IInput {
   required?: boolean;
   selectData?: ISelectDTO[];
   mask?: string | Array<string | RegExp>;
-  style?: React.CSSProperties;
+  style?: any;
   marked?: boolean;
   className?: string;
   onBlurFnc?: (e: any) => void;

@@ -1,17 +1,9 @@
-import React, {
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import { useHistory } from 'react-router';
+import React, { SetStateAction, useCallback, useRef, useState } from 'react';
 
 import { LineItem } from 'styles/others';
 import { FaCheckCircle } from 'react-icons/fa';
 import { IInput } from 'components/FormConstructor';
-import { FormHandles, SubmitHandler } from '@unform/core';
-import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
 
 import Input from 'components/Input';
 import Select from 'components/Select';

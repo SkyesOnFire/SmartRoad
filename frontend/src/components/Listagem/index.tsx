@@ -91,6 +91,7 @@ const Listagem: React.FC<IProps> = props => {
       .finally(() => {
         setLoading(false);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addToast, moduleLabel, module, filter, getUrl, update]);
 
   useEffect(() => {
