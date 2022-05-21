@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-export const tratarValorToNumber = (valor: string) => {
+export const tratarValorToNumber = (valor: string): number => {
   const valorString = valor
     .replace('R$ ', '')
     .replace('.', '')
@@ -38,6 +38,7 @@ export const tratarValorToString = (valor: number): string => {
   return valor_final;
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const tratarValorObjeto = (row_data: any, dat: any): string => {
   const tmp_dat = [
     row_data.split('.')[0],

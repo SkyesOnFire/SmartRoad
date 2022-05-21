@@ -5,7 +5,6 @@ import React, {
   useCallback,
   TextareaHTMLAttributes,
 } from 'react';
-import { IconBaseProps } from 'react-icons';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
 

@@ -3,7 +3,6 @@ import ReactSelect, {
   OptionTypeBase,
   Props as SelectProps,
 } from 'react-select';
-import { IconBaseProps } from 'react-icons';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
 

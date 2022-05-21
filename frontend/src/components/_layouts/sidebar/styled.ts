@@ -32,9 +32,9 @@ export const SidebarHolder = styled.aside<Sidebar>`
   overflow-x: hidden;
   transition: 0.5s;
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     display: none;
-  }
+  } */
 `;
 
 export const Nav = styled.div`

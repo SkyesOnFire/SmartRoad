@@ -1,5 +1,4 @@
-import { differenceInYears, parseISO } from 'date-fns';
-import { format, zonedTimeToUtc } from 'date-fns-tz';
+import { format } from 'date-fns-tz';
 
 export function formatDateWithHour(date: string | Date): string {
   const formattedDate = formatDate(date);
@@ -11,7 +10,7 @@ export function formatDateWithHour(date: string | Date): string {
     : '';
 }
 
-export function formatDate(date?: any): Date | undefined {
+export function formatDate(date?: string | number | Date): Date | undefined {
   const utcDate =
     date !== undefined && date !== null
       ? new Date(new Date(date).toISOString().replace('.000Z', ''))

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import { AxiosError, AxiosResponse } from 'axios';
@@ -25,28 +25,12 @@ const NovoUsuario: React.FC = () => {
 
   const perfisDeUsuario: ISelectDTO[] = [
     {
-      label: 'Inicial',
-      value: '0',
-    },
-    {
-      label: 'Administrativo',
+      label: 'Usuário',
       value: '1',
     },
     {
-      label: 'Comercial',
+      label: 'Administrador',
       value: '2',
-    },
-    {
-      label: 'Coordenadores',
-      value: '3',
-    },
-    {
-      label: 'Técnico',
-      value: '4',
-    },
-    {
-      label: 'Coordenador Financeiro',
-      value: '5',
     },
   ];
 
@@ -84,12 +68,6 @@ const NovoUsuario: React.FC = () => {
       tipo: 'input',
       type: 'password',
       required: true,
-    },
-    {
-      name: 'comissao',
-      label: 'Comissao',
-      tipo: 'input',
-      type: 'number',
     },
     {
       name: 'cod_perfil',
@@ -156,7 +134,7 @@ const NovoUsuario: React.FC = () => {
             });
             console.error(`Erro: ${err}`);
           });
-      } catch (err) {
+      } catch (err: any) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 

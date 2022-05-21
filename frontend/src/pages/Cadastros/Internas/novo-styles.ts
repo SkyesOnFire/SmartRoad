@@ -1,12 +1,4 @@
-import styled, { css } from 'styled-components';
-
-import Button from 'components/Button';
-import BoxContainer from 'components/BoxContainer';
-
-interface ContainerProps {
-  error?: boolean;
-  ok?: boolean;
-}
+import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;

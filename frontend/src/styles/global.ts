@@ -1,12 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
-import 'typeface-raleway';
+import 'typeface-montserrat';
 
 export default createGlobalStyle`
   :root {
-    --primary-color: #66b24e;
+    --primary-color: #008AED;
     --secundary-color: #f58634;
     --tertiary-color: #9fbcdf;
-    --quaternary-color: #523f31;
+    --quaternary-color: #6599CC;
 
     --main-color: var(--primary-color);
 
@@ -20,10 +20,10 @@ export default createGlobalStyle`
     --black: #111;
     --light-grey: #cfcfcf;
 
-    --text-color-0: #968a81;
-    --text-color-1: #fff;
+    --text-color-0: #fff;
+    --text-color-1: #fafafa;
     --text-color-2: #333;
-    --text-color-3: #777;
+    --text-color-3: #000;
 
     --main-bg-color: #fafbfd;
     --box-bg-color: #fff;
@@ -96,7 +96,7 @@ export default createGlobalStyle`
   }
 
   body, input, button {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.1rem;
   }
 

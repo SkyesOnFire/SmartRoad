@@ -1,4 +1,4 @@
-import React, { SetStateAction, useCallback, useEffect, useState } from 'react';
+import React, { SetStateAction, useCallback, useState, useEffect } from 'react';
 
 import { FiMenu } from 'react-icons/fi';
 import { FaClock, FaSignOutAlt } from 'react-icons/fa';
@@ -49,19 +49,19 @@ const HeaderLogged: React.FC<IProps> = props => {
     setDate(tempDate);
   }, [active]);
 
-  // useEffect(() => {
-  //   document.addEventListener(
-  //     'visibilitychange',
-  //     () => {
-  //       if (document.hidden) {
-  //         setActive(false);
-  //       } else {
-  //         setActive(true);
-  //       }
-  //     },
-  //     false
-  //   );
-  // }, []);
+  useEffect(() => {
+    document.addEventListener(
+      'visibilitychange',
+      () => {
+        if (document.hidden) {
+          setActive(false);
+        } else {
+          setActive(true);
+        }
+      },
+      false
+    );
+  }, []);
 
   process.env.NODE_ENV !== 'development' &&
     active &&

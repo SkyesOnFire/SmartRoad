@@ -8,17 +8,10 @@ import { useToast } from 'hooks/toast';
 import api from 'services/api';
 import FormConstructor, { IInput, ISaveBtn } from 'components/FormConstructor';
 import getValidationErrors from 'utils/getValidationErrors';
-import ManyToManyModal from 'components/ManyToManyModal';
 import { ISelectDTO } from 'utils/DTOS';
 
 import Spinner from 'components/Spinner';
-import {
-  Container,
-  HeaderHolder,
-  HeaderItem,
-  BodyHolder,
-  ModalOpener,
-} from '../interna-styles';
+import { Container, BodyHolder } from '../interna-styles';
 import { TitleHolder } from '../styles';
 
 interface ParamsTypes {
@@ -50,24 +43,12 @@ const UsuariosInterna: React.FC = () => {
       value: '0',
     },
     {
-      label: 'Administrativo',
+      label: 'Usuário',
       value: '1',
     },
     {
-      label: 'Comercial',
+      label: 'Administrador',
       value: '2',
-    },
-    {
-      label: 'Coordenadores',
-      value: '3',
-    },
-    {
-      label: 'Técnico',
-      value: '4',
-    },
-    {
-      label: 'Coordenador Financeiro',
-      value: '5',
     },
   ];
 
@@ -107,13 +88,6 @@ const UsuariosInterna: React.FC = () => {
       required: true,
     },
     {
-      name: 'comissao',
-      label: 'Comissao',
-      tipo: 'input',
-      type: 'number',
-      required: true,
-    },
-    {
       name: 'cod_perfil',
       label: 'Perfil do Usuário',
       tipo: 'select',
@@ -143,6 +117,7 @@ const UsuariosInterna: React.FC = () => {
       .finally(() => {
         setLoading(false);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addToast, id, module, update]);
 
   useEffect(() => {
@@ -213,6 +188,7 @@ const UsuariosInterna: React.FC = () => {
         setLoading(false);
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [addToast, id, update]
   );
 
@@ -220,7 +196,7 @@ const UsuariosInterna: React.FC = () => {
     <Container>
       {data ? (
         <>
-          <BodyHolder style={{ marginTop: 60 }}>
+          <BodyHolder>
             <TitleHolder>
               {module_label} #{id}:
             </TitleHolder>

@@ -27,10 +27,6 @@ const Usuarios: React.FC = () => {
       data: 'cpf',
     },
     {
-      label: 'Comissão',
-      data: 'comissao',
-    },
-    {
       label: 'Perfil',
       data: 'des_perfil',
     },
@@ -52,7 +48,7 @@ const Usuarios: React.FC = () => {
           <Listagem
             rows={rows}
             module="usuarios"
-            template="100px 2fr 2.5fr 150px 100px 1fr"
+            template="100px 2fr 2.5fr 1.5fr 1.1fr"
             editUrl="/cadastros/usuarios/usuario"
             indexUrl="/cadastros/usuarios/usuario"
             deleteUrl="/usuarios/usuario"

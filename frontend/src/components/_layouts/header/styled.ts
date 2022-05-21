@@ -34,7 +34,6 @@ export const HeaderHolder = styled.header<Header>`
   transition: 0.5s;
 
   @media (max-width: 768px) {
-    width: 100%;
     height: var(--layout-mobile-items-size);
     padding: 0px;
   }
@@ -106,6 +105,11 @@ export const LogoHolder = styled.div`
   justify-content: flex-start;
   align-items: center;
 
+  h1 {
+    margin: 0;
+    font-size: 30px;
+  }
+
   img {
     height: 70%;
     width: auto;
@@ -115,6 +119,12 @@ export const LogoHolder = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    padding: 0;
+
+    h1 {
+      font-size: 16px;
+    }
   }
 `;
 
@@ -151,7 +161,11 @@ export const UserHolder = styled.div`
   }
 
   @media (max-width: 768px) {
-    display: none;
+    span {
+      display: none;
+    }
+
+    padding: 0;
   }
 `;
 
@@ -239,9 +253,5 @@ export const SignOutHolder = styled.div`
       color: var(--text-color);
       cursor: pointer;
     }
-  }
-
-  @media (max-width: 768px) {
-    display: none;
   }
 `;

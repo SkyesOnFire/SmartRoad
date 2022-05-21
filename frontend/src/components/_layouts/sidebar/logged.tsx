@@ -1,10 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { GiMoneyStack } from 'react-icons/gi';
 import { AiOutlineHome } from 'react-icons/ai';
-import { FaTasks } from 'react-icons/fa';
-import { HiOutlineClipboardList } from 'react-icons/hi';
 
 import { BsArrowReturnLeft } from 'react-icons/bs';
 import { SidebarHolder, Nav, NavItem } from './styled';

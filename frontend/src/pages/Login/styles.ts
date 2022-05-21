@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import LoginBg from 'assets/fundoLoginBg2.jpg';
-import LoginBgHD from 'assets/fundoLoginBg2-fullhd.jpg';
+import LoginBgHD from 'assets/fundoLoginBg-fullhd.jpg';
 
 export const Container = styled.div`
   display: flex;
@@ -20,8 +19,6 @@ export const Container = styled.div`
   }
 
   @media (max-width: 1366px) {
-    background-image: url(${LoginBg});
-
     form {
       width: 45%;
       height: 90%;
@@ -89,7 +86,8 @@ export const FormHeader = styled.div`
   overflow: visible !important;
 
   img {
-    width: 40%;
+    width: auto;
+    aspect-ratio: 1/1;
   }
 
   h1 {
@@ -97,6 +95,7 @@ export const FormHeader = styled.div`
     font-weight: 600;
     color: var(--quaternary-color);
     overflow: visible !important;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 768px) {
@@ -104,7 +103,8 @@ export const FormHeader = styled.div`
     align-items: center;
 
     img {
-      width: 70%;
+      width: auto;
+      aspect-ratio: 1/1;
     }
   }
 `;
