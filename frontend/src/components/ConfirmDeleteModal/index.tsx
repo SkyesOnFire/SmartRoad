@@ -34,7 +34,7 @@ const ConfirmDeleteModal: React.FC<IModalAttatchment> = props => {
   const deleteThing = useCallback(() => {
     api
       .delete(`${delete_url}/${id}`)
-      .then(res => {
+      .then(() => {
         addToast({
           type: 'success',
           title: `${
@@ -68,12 +68,9 @@ const ConfirmDeleteModal: React.FC<IModalAttatchment> = props => {
       });
   }, [module, addToast, delete_url, setUpdate, update, id]);
 
-  const handleConfirm = useCallback(
-    async data => {
-      deleteThing();
-    },
-    [deleteThing]
-  );
+  const handleConfirm = useCallback(async () => {
+    deleteThing();
+  }, [deleteThing]);
 
   return (
     <>

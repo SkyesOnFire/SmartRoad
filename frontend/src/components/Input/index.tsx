@@ -5,7 +5,6 @@ import React, {
   useState,
   useCallback,
 } from 'react';
-import { IconBaseProps } from 'react-icons';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
 
@@ -13,7 +12,7 @@ import { Container, Error } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  icon?: React.ComponentType<IconBaseProps>;
+  icon?: any;
   iconSize?: number;
   readonly?: boolean;
   clean?: boolean;

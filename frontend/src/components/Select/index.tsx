@@ -3,7 +3,6 @@ import ReactSelect, {
   OptionTypeBase,
   Props as SelectProps,
 } from 'react-select';
-import { IconBaseProps } from 'react-icons';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
 
@@ -12,7 +11,7 @@ import { Container, Error } from './styles';
 
 interface Props extends SelectProps<OptionTypeBase> {
   name: string;
-  icon?: React.ComponentType<IconBaseProps>;
+  icon?: any;
   iconSize?: number;
   options: ISelectDTO[];
   disabled?: boolean;
@@ -52,6 +51,8 @@ const Select: React.FC<Props> = ({
     return def;
   }, [defaultValue, options]);
 
+  const restt: any = rest;
+
   useEffect(() => {
     registerField({
       name: fieldName,
@@ -60,7 +61,7 @@ const Select: React.FC<Props> = ({
         ref.select.clearValue();
       },
       getValue: (ref: any) => {
-        if (rest.isMulti) {
+        if (restt.isMulti) {
           if (!ref.state.value) {
             return [];
           }
@@ -75,7 +76,7 @@ const Select: React.FC<Props> = ({
         ref.select.select.setValue(value);
       },
     });
-  }, [fieldName, registerField, rest.isMulti]);
+  }, [fieldName, registerField, restt.isMulti]);
 
   return (
     <Container
@@ -93,7 +94,7 @@ const Select: React.FC<Props> = ({
         ref={selectRef}
         styles={{
           // Fixes the overlapping problem of the component
-          menu: provided => ({
+          menu: (provided: any) => ({
             ...provided,
             zIndex: 9999,
           }),

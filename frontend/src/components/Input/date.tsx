@@ -9,7 +9,7 @@ import { Container, Error } from './styles';
 
 interface InputProps extends Omit<ReactDatePickerProps, 'onChange'> {
   name: string;
-  icon?: React.ComponentType<IconBaseProps>;
+  icon?: any;
   iconSize?: number;
   readonly?: boolean;
   clean?: boolean;
