@@ -9,18 +9,18 @@ class GetOneLocalService {
   constructor(
     @inject('LocaisRepository')
     private locaisRepository: ILocaisRepository,
-  ) {}
+  ) { }
 
-  public async execute(notificacao_id: number): Promise<Local | undefined> {
-    const notificacao: any = await this.locaisRepository.findById(notificacao_id);
+  public async execute(local_id: number): Promise<Local | undefined> {
+    const local: any = await this.locaisRepository.findById(local_id);
 
-    if (!notificacao) {
+    if (!local) {
       throw new AppError('Usuário não encontrado', 404);
     }
 
-    notificacao.tag = await notificacao.tag;
+    local.tag = await local.tag;
 
-    return notificacao;
+    return local;
   }
 }
 

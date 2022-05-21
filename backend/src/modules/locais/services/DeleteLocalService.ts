@@ -8,12 +8,12 @@ class DeleteLocalService {
   constructor(
     @inject('LocaisRepository')
     private locaisRepository: ILocaisRepository,
-  ) {}
+  ) { }
 
-  public async execute(notificacao_id: number): Promise<DeleteResult> {
-    const notificacao = await this.locaisRepository.delete(notificacao_id);
+  public async execute(local_id: number): Promise<DeleteResult> {
+    const local: any = await this.locaisRepository.delete(local_id);
 
-    return notificacao;
+    return local;
   }
 }
 

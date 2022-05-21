@@ -40,6 +40,7 @@ export default class NotificacoesController {
     const {
       dt_ocorrencia,
       tag_id,
+      name
     } = req.body;
 
     const createNotificacao = container.resolve(CreateNotificacaoService);
@@ -47,6 +48,7 @@ export default class NotificacoesController {
     const notificacao = await createNotificacao.execute({
       dt_ocorrencia,
       tag_id,
+      name
     });
 
     return res.status(201).json(instanceToPlain(notificacao));

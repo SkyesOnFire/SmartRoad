@@ -6,8 +6,9 @@ import ITagsRepository from '@modules/tags/repositories/ITagsRepository';
 import AppError from '@shared/errors/AppError';
 
 interface IRequest {
-  dt_ocorrencia?: Date;
   tag_id: number;
+  dt_ocorrencia?: Date;
+  name: string;
 }
 
 @injectable()
@@ -18,10 +19,11 @@ class CreateNotificacaoService {
 
     @inject('TagsRepository')
     private tagsRepository: ITagsRepository,
-  ) {}
+  ) { }
 
   public async execute({
     dt_ocorrencia,
+    name,
     tag_id,
   }: IRequest): Promise<Notificacao> {
     const tag = await this.tagsRepository.findById(tag_id);
@@ -34,8 +36,8 @@ class CreateNotificacaoService {
       dt_ocorrencia = new Date();
     }
 
-    let notificacao = await this.notificacoesRepository.create({
-      dt_ocorrencia,
+    let notificacao: any = await this.notificacoesRepository.create({
+      dt_ocorrencia, name
     });
 
     notificacao.tag = Promise.resolve(tag);

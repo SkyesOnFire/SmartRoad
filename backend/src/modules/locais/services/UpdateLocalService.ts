@@ -20,14 +20,14 @@ class UpdateLocalService {
 
     @inject('TagsRepository')
     private tagsRepository: ITagsRepository,
-  ) {}
+  ) { }
 
   public async execute({
     notificacao_id,
     dt_ocorrencia,
     tag_id,
   }: IRequest): Promise<Local> {
-    const notificacao = await this.locaisRepository.findById(notificacao_id);
+    const notificacao: any = await this.locaisRepository.findById(notificacao_id);
 
     if (!notificacao) {
       throw new AppError('Local não existe.', 404);
@@ -39,7 +39,7 @@ class UpdateLocalService {
     if (tag_id) {
       const tag = await this.tagsRepository.findById(tag_id);
 
-      if(!tag) {
+      if (!tag) {
         throw new AppError('Tag não existente', 404);
       }
 

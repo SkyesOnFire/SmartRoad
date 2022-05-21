@@ -39,14 +39,14 @@ export default class LocaisController {
   public async create(req: Request, res: Response): Promise<Response> {
     const {
       dt_ocorrencia,
-      tag_id,
+      name,
     } = req.body;
 
     const createLocal = container.resolve(CreateLocalService);
 
     const notificacao = await createLocal.execute({
       dt_ocorrencia,
-      tag_id,
+      name,
     });
 
     return res.status(201).json(instanceToPlain(notificacao));
