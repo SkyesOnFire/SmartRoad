@@ -62,6 +62,7 @@
     "nodemailer": "^6.4.16",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
+    "swagger-ui-express": "^4.4.0",
     "tsyringe": "^4.3.0",
     "typeorm": "^0.2.45",
     "typeorm-pagination": "^2.0.3",
