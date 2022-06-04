@@ -1,0 +1,360 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Smart Road API",
+        "description": "Backend API for the smart road project.",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3333",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Sessão",
+            "description": "API for session"
+        },
+        {
+            "name": "Usuarios",
+            "description": "API for users in the system"
+        },
+        {
+            "name": "Veiculos",
+            "description": "API for vehicles in the system"
+        },
+        {
+            "name": "Leituras",
+            "description": "API for reads in the system"
+        },
+        {
+            "name": "Locais",
+            "description": "API for saved locals in the system"
+        },
+        {
+            "name": "Tags",
+            "description": "API for tags in the system"
+        },
+        {
+            "name": "Notitificacoes",
+            "description": "API for notifications in the system"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/usuarios": {
+            "post": {
+                "security": [
+                    {
+                        "smartRoadSec": []
+                    }
+                ],
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Add a new user to the system.",
+                "description": "",
+                "operationId": "addUser",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            },
+            "get": {
+                "security": [
+                    {
+                        "smartRoadSec": []
+                    }
+                ],
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Lists all users in the system.",
+                "description": "",
+                "operationId": "listUser",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/veiculos": {
+            "post": {
+                "security": [
+                    {
+                        "smartRoadSec": []
+                    }
+                ],
+                "tags": [
+                    "Veiculos"
+                ],
+                "summary": "Add a new vehicle to the system.",
+                "description": "",
+                "operationId": "addVehicle",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Vehicle object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/Veiculo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            },
+            "get": {
+                "security": [
+                    {
+                        "smartRoadSec": []
+                    }
+                ],
+                "tags": [
+                    "Veiculos"
+                ],
+                "summary": "Lists all vehicles in the system.",
+                "description": "",
+                "operationId": "listVehicles",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/tags": {
+            "post": {
+                "security": [
+                    {
+                        "smartRoadSec": []
+                    }
+                ],
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "Add a new tags to the system.",
+                "description": "",
+                "operationId": "addTag",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Tag object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/Tag"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            },
+            "get": {
+                "security": [
+                    {
+                        "smartRoadSec": []
+                    }
+                ],
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "Lists all tags in the system.",
+                "description": "",
+                "operationId": "listTags",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/sessions": {
+            "post": {
+                "tags": [
+                    "Sessão"
+                ],
+                "summary": "Creates a session for a user.",
+                "description": "",
+                "operationId": "addSession",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Session object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/Session"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Usuario": {
+            "type": "object",
+            "properties": {
+                "nome": {
+                    "type": "string"
+                },
+                "cpf": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "senha": {
+                    "type": "string"
+                },
+                "cod_perfil": {
+                    "type": "string"
+                }
+            }
+        },
+        "Session": {
+            "type": "object",
+            "properties": {
+                "cpf": {
+                    "type": "string"
+                },
+                "senha": {
+                    "type": "string"
+                }
+            }
+        },
+        "Tag": {
+            "type": "object",
+            "properties": {
+                "cod_tag": {
+                    "type": "string"
+                }
+            }
+        },
+        "Veiculo": {
+            "type": "object",
+            "properties": {
+                "placa": {
+                    "type": "string"
+                },
+                "renavam": {
+                    "type": "string"
+                },
+                "cor": {
+                    "type": "string"
+                },
+                "marca": {
+                    "type": "string"
+                },
+                "modelo": {
+                    "type": "string"
+                },
+                "tag_id": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "smartRoadSec": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
