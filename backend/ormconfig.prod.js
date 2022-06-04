@@ -21,3 +21,4 @@ module.exports = {
     "migrationsDir": "./src/shared/infra/typeorm/migrations"
   }
 }
+

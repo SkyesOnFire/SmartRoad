@@ -21,6 +21,9 @@ import '@shared/container';
 dotenv.config();
 const app = express();
 
+const swaggerUi = require("swagger-ui-express"),
+swaggerDocument = require("../../../../swagger.json");
+
 app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(uploadConfig.tmpFolder));
@@ -56,6 +59,12 @@ app.listen(3333, () => {
     )} Server started at port: 3333 in ${process.env.NODE_ENV} ambient`,
   );
 });
+
+app.use(
+  '/api-docs',
+  swaggerUi.serve, 
+  swaggerUi.setup(swaggerDocument)
+);
 
 // cron.schedule("* * * * *", () => console.log("Executando a tarefa a cada 1 minuto"));
 
