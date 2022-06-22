@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { AiOutlineHome } from 'react-icons/ai';
-import { FaWpforms } from 'react-icons/fa';
+import { FaCar, FaTag, FaWpforms } from 'react-icons/fa';
 
 import { BsArrowReturnLeft } from 'react-icons/bs';
 import { SidebarHolder, Nav, NavItem } from './styled';
@@ -28,6 +28,26 @@ const Sidebar: React.FC<IProps> = props => {
         >
           <AiOutlineHome size={20} />
           <span>Início</span>
+        </NavItem>
+        <NavItem
+          onClick={() => {
+            history.push('/veiculos');
+          }}
+          type="button"
+          id="tags"
+        >
+          <FaTag size={20} />
+          <span>Tags</span>
+        </NavItem>
+        <NavItem
+          onClick={() => {
+            history.push('/veiculos');
+          }}
+          type="button"
+          id="veiculos"
+        >
+          <FaCar size={20} />
+          <span>Veículos</span>
         </NavItem>
         <NavItem
           onClick={() => {
