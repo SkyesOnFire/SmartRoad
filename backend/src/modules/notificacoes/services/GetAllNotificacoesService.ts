@@ -15,7 +15,7 @@ class GetAllNotificacoesService {
     const notificacoes = await this.notificacoesRepository.findAll();
 
     if (!notificacoes) {
-      throw new AppError('Nenhum usuário foi encontrado', 404);
+      throw new AppError('Nenhuma notificação foi encontrado', 404);
     }
 
     for (let i = 0; i < notificacoes.length; i++) {

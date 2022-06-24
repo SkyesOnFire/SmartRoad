@@ -15,7 +15,9 @@ notificacoesRouter.get(
 
 notificacoesRouter.get('/', ensureAuthenticated, notificacoesController.getall);
 
-notificacoesRouter.post('/', notificacoesController.create);
+notificacoesRouter.get('/usuario', ensureAuthenticated, notificacoesController.getallbyusuario);
+
+notificacoesRouter.post('/', ensureAuthenticated, notificacoesController.create);
 
 notificacoesRouter.put(
   '/notificacao/:id',

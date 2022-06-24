@@ -15,10 +15,10 @@ class GetOneLocalService {
     const local: any = await this.locaisRepository.findById(local_id);
 
     if (!local) {
-      throw new AppError('Usuário não encontrado', 404);
+      throw new AppError('Local não encontrado', 404);
     }
 
-    local.tag = await local.tag;
+    local.usuario = await local.usuario;
 
     return local;
   }

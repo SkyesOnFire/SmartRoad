@@ -24,7 +24,20 @@ class VeiculosRepository implements IVeiculosRepository {
     return veiculo;
   }
 
-  public async findAllByTag(tag_id: string): Promise<Veiculo[]> {
+  public async findAllByUsuario(usuario_id: number): Promise<Veiculo[]> {
+    const veiculos = await this.ormRepository.find({
+      where: {
+        usuario: usuario_id,
+      },
+      order: {
+        id: 'ASC'
+      }
+    });
+
+    return veiculos;
+  }
+
+  public async findAllByTag(tag_id: number): Promise<Veiculo[]> {
     const veiculos = await this.ormRepository.find({
       where: {
         tag: tag_id,
@@ -36,6 +49,17 @@ class VeiculosRepository implements IVeiculosRepository {
 
   public async findById(veiculo_id: number): Promise<Veiculo | undefined> {
     const veiculo = await this.ormRepository.findOne(veiculo_id);
+
+    return veiculo;
+  }
+
+  public async findByPlacaOrRenavan(placa?: string, renavam?: string): Promise<Veiculo | undefined> {
+    const veiculo = await this.ormRepository.findOne({
+      where: [
+        { placa },
+        { renavam },
+      ]
+    });
 
     return veiculo;
   }

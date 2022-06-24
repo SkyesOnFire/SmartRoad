@@ -15,7 +15,7 @@ class GetOneNotificacaoService {
     const notificacao: any = await this.notificacoesRepository.findById(notificacao_id);
 
     if (!notificacao) {
-      throw new AppError('Usuário não encontrado', 404);
+      throw new AppError('Notificação não encontrada', 404);
     }
 
     notificacao.tag = await notificacao.tag;

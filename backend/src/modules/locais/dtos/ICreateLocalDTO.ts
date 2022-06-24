@@ -1,4 +1,8 @@
 export default interface ICreateLocalDTO {
-  dt_ocorrencia: Date;
-  name: string;
+  nome: string;
+  endereco_completo: string;
+  cidade: string;
+  estado: string;
+  latitude: number;
+  longitude: number;
 }

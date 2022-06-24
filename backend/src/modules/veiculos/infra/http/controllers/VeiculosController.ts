@@ -8,6 +8,7 @@ import GetAllVeiculosService from '@modules/veiculos/services/GetAllVeiculosServ
 import UpdateVeiculoService from '@modules/veiculos/services/UpdateVeiculoService';
 import CreateVeiculoService from '@modules/veiculos/services/CreateVeiculoService';
 import DeleteVeiculoService from '@modules/veiculos/services/DeleteVeiculoService';
+import GetAllUsuarioVeiculosService from '@modules/veiculos/services/GetAllUsuarioVeiculosService';
 
 export default class VeiculosController {
   public async getone(req: Request, res: Response): Promise<Response> {
@@ -29,6 +30,13 @@ export default class VeiculosController {
     return res.json(instanceToPlain(veiculo));
   }
 
+  public async getallbyusuario(req: Request, res: Response): Promise<Response> {
+    const getAllUsuarioVeiculos = container.resolve(GetAllUsuarioVeiculosService);
+    const veiculos = await getAllUsuarioVeiculos.execute({ usuario_id: req.usuario.id });
+
+    return res.json(instanceToPlain(veiculos));
+  }
+
   public async getall(req: Request, res: Response): Promise<Response> {
     const getAllVeiculos = container.resolve(GetAllVeiculosService);
     const veiculos = await getAllVeiculos.execute();
@@ -47,12 +55,15 @@ export default class VeiculosController {
 
     const createVeiculo = container.resolve(CreateVeiculoService);
 
+    const { id: usuario_id } = req.usuario;
+
     const veiculo = await createVeiculo.execute({
       placa,
       renavam,
       cor,
       marca,
       modelo,
+      usuario_id,
     });
 
     return res.status(201).json(instanceToPlain(veiculo));
@@ -66,7 +77,8 @@ export default class VeiculosController {
       cor,
       marca,
       modelo,
-      tag_id,
+      cod_tag,
+      usuario_id,
     } = req.body;
 
     const updateVeiculo = container.resolve(UpdateVeiculoService);
@@ -78,7 +90,8 @@ export default class VeiculosController {
       cor,
       marca,
       modelo,
-      tag_id,
+      cod_tag,
+      usuario_id,
     });
 
     return res.json(instanceToPlain(veiculo));

@@ -15,7 +15,7 @@ class GetOneVeiculoService {
     const veiculo: any = await this.veiculosRepository.findById(veiculo_id);
 
     if (!veiculo) {
-      throw new AppError('Usuário não encontrado', 404);
+      throw new AppError('Veículo não encontrado', 404);
     }
 
     veiculo.tag = await veiculo.tag;

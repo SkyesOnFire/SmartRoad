@@ -1,3 +1,4 @@
+import Local from '@modules/locais/infra/typeorm/entities/Local';
 import Tag from '@modules/tags/infra/typeorm/entities/Tag';
 import {
   Entity,
@@ -21,6 +22,12 @@ class Leitura {
     lazy: true,
   })
   tag: Promise<Tag>;
+
+  @ManyToOne((type) => Local, (leituras) => Leitura, {
+    onDelete: 'CASCADE',
+    lazy: true,
+  })
+  local: Promise<Local>;
 
   @CreateDateColumn()
   created_at: Date;

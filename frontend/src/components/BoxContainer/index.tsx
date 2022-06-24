@@ -23,7 +23,7 @@ const BoxContainer: React.FC<IProps> = props => {
 
   return (
     <Container
-      className={extraClass ? `container ${extraClass}` : 'container'}
+      className={extraClass ? `boxContainer ${extraClass}` : 'boxContainer'}
       borderColor={borderColor}
       {...rest}
     >

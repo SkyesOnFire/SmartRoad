@@ -17,3 +17,13 @@ declare module 'react-currency-input' {
   const props: any;
   export default props;
 }
+
+declare module '@coreui/utils' {
+  const props: any;
+
+  const getStyle: any;
+  const hexToRgba: any;
+
+  export { getStyle, hexToRgba };
+  export default props;
+}
