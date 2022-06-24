@@ -4,15 +4,21 @@ import { injectable, inject } from 'tsyringe';
 import Veiculo from '../infra/typeorm/entities/Veiculo';
 import IVeiculosRepository from '../repositories/IVeiculosRepository';
 
+interface IRequest {
+  usuario_id: number;
+}
+
 @injectable()
-class GetAllVeiculosService {
+class GetAllUsuarioVeiculosService {
   constructor(
     @inject('VeiculosRepository')
     private veiculosRepository: IVeiculosRepository,
   ) {}
 
-  public async execute(): Promise<Veiculo[]> {
-    const veiculos = await this.veiculosRepository.findAll();
+  public async execute({
+    usuario_id
+  }: IRequest): Promise<Veiculo[]> {
+    const veiculos = await this.veiculosRepository.findAllByUsuario(usuario_id);
 
     if (!veiculos) {
       throw new AppError('Nenhum veículo foi encontrado', 404);
@@ -28,4 +34,4 @@ class GetAllVeiculosService {
   }
 }
 
-export default GetAllVeiculosService;
+export default GetAllUsuarioVeiculosService;

@@ -8,6 +8,7 @@ import GetAllTagsService from '@modules/tags/services/GetAllTagsService';
 import UpdateTagService from '@modules/tags/services/UpdateTagService';
 import CreateTagService from '@modules/tags/services/CreateTagService';
 import DeleteTagService from '@modules/tags/services/DeleteTagService';
+import GetAllUsuarioTagsService from '@modules/tags/services/GetAllUsuarioTagsService';
 
 export default class TagsController {
   public async getone(req: Request, res: Response): Promise<Response> {
@@ -27,6 +28,13 @@ export default class TagsController {
     const tag = await deleteTag.execute(parseInt(tag_id));
 
     return res.json(instanceToPlain(tag));
+  }
+
+  public async getallbyusuario(req: Request, res: Response): Promise<Response> {
+    const getAllUsuarioTags = container.resolve(GetAllUsuarioTagsService);
+    const tags = await getAllUsuarioTags.execute({ usuario_id: req.usuario.id });
+
+    return res.json(instanceToPlain(tags));
   }
 
   public async getall(req: Request, res: Response): Promise<Response> {

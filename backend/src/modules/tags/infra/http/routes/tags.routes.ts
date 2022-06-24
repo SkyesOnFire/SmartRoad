@@ -15,6 +15,8 @@ tagsRouter.get(
 
 tagsRouter.get('/', ensureAuthenticated, tagsController.getall);
 
+tagsRouter.get('/usuario', ensureAuthenticated, tagsController.getallbyusuario);
+
 tagsRouter.post('/', ensureAuthenticated, tagsController.create);
 
 tagsRouter.put(

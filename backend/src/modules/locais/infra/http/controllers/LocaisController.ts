@@ -8,6 +8,7 @@ import GetAllLocaisService from '@modules/locais/services/GetAllLocaisService';
 import UpdateLocalService from '@modules/locais/services/UpdateLocalService';
 import CreateLocalService from '@modules/locais/services/CreateLocalService';
 import DeleteLocalService from '@modules/locais/services/DeleteLocalService';
+import GetAllUsuarioLocaisService from '@modules/locais/services/GetAllUsuarioLocaisService';
 
 export default class LocaisController {
   public async getone(req: Request, res: Response): Promise<Response> {
@@ -27,6 +28,13 @@ export default class LocaisController {
     const notificacao = await deleteLocal.execute(parseInt(notificacao_id));
 
     return res.json(instanceToPlain(notificacao));
+  }
+
+  public async getallbyusuario(req: Request, res: Response): Promise<Response> {
+    const getAllUsuarioLocais = container.resolve(GetAllUsuarioLocaisService);
+    const locais = await getAllUsuarioLocais.execute({ usuario_id: req.usuario.id });
+
+    return res.json(instanceToPlain(locais));
   }
 
   public async getall(req: Request, res: Response): Promise<Response> {

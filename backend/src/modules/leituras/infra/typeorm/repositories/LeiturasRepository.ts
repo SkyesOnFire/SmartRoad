@@ -18,6 +18,16 @@ class LeiturasRepository implements ILeiturasRepository {
     return leitura;
   }
 
+  public async findAllByUsuario(usuario_id: number): Promise<Leitura[]> {
+    const leituras = await this.ormRepository
+      .createQueryBuilder('leitura')
+      .leftJoinAndSelect('leitura.tag', 'tag')
+      .where(`tag.usuarioId = ${usuario_id}`)
+      .getMany();
+
+    return leituras;
+  }
+
   public async findAll(): Promise<Leitura[]> {
     const leitura = await this.ormRepository.find({ order: { id: 'ASC' } });
 

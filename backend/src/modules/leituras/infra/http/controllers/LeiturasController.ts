@@ -10,6 +10,7 @@ import UpdateLeituraService from '@modules/leituras/services/UpdateLeituraServic
 import CreateLeituraService from '@modules/leituras/services/CreateLeituraService';
 import DeleteLeituraService from '@modules/leituras/services/DeleteLeituraService';
 import CreateLeituraByCodTagService from '@modules/leituras/services/CreateLeituraByCodTagService';
+import GetAllUsuarioLeiturasService from '@modules/leituras/services/GetAllUsuarioLeiturasService';
 
 export default class LeiturasController {
   public async getone(req: Request, res: Response): Promise<Response> {
@@ -29,6 +30,13 @@ export default class LeiturasController {
     const leitura = await deleteLeitura.execute(parseInt(leitura_id));
 
     return res.json(instanceToPlain(leitura));
+  }
+
+  public async getallbyusuario(req: Request, res: Response): Promise<Response> {
+    const getAllUsuarioLeituras = container.resolve(GetAllUsuarioLeiturasService);
+    const leituras = await getAllUsuarioLeituras.execute({ usuario_id: req.usuario.id });
+
+    return res.json(instanceToPlain(leituras));
   }
 
   public async getall(req: Request, res: Response): Promise<Response> {

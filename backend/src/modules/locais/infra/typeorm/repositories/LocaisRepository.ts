@@ -12,16 +12,26 @@ class LocaisRepository implements ILocaisRepository {
     this.ormRepository = getRepository(Local);
   }
 
-  public async delete(notificacao_id: number): Promise<DeleteResult> {
-    const notificacao = await this.ormRepository.delete(notificacao_id);
+  public async delete(local_id: number): Promise<DeleteResult> {
+    const local = await this.ormRepository.delete(local_id);
 
-    return notificacao;
+    return local;
+  }
+
+  public async findAllByUsuario(usuario_id: number): Promise<Local[]> {
+    const locais = await this.ormRepository.find({
+      where: {
+        usuario: usuario_id,
+      },
+    });
+
+    return locais;
   }
 
   public async findAll(): Promise<Local[]> {
-    const notificacao = await this.ormRepository.find({ order: { id: 'ASC' } });
+    const local = await this.ormRepository.find({ order: { id: 'ASC' } });
 
-    return notificacao;
+    return local;
   }
 
   public async findAllByTag(tag_id: string): Promise<Local[]> {
@@ -34,22 +44,22 @@ class LocaisRepository implements ILocaisRepository {
     return locais;
   }
 
-  public async findById(notificacao_id: number): Promise<Local | undefined> {
-    const notificacao = await this.ormRepository.findOne(notificacao_id);
+  public async findById(local_id: number): Promise<Local | undefined> {
+    const local = await this.ormRepository.findOne(local_id);
 
-    return notificacao;
+    return local;
   }
 
-  public async create(notificacaoData: ICreateLocalDTO): Promise<Local> {
-    const notificacao = await this.ormRepository.create(notificacaoData);
+  public async create(localData: ICreateLocalDTO): Promise<Local> {
+    const local = await this.ormRepository.create(localData);
 
-    await this.ormRepository.save(notificacao);
+    await this.ormRepository.save(local);
 
-    return notificacao;
+    return local;
   }
 
-  public async save(notificacao: Local): Promise<Local> {
-    return this.ormRepository.save(notificacao);
+  public async save(local: Local): Promise<Local> {
+    return this.ormRepository.save(local);
   }
 }
 

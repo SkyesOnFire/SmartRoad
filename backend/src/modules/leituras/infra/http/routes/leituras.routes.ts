@@ -15,6 +15,8 @@ leiturasRouter.get(
 
 leiturasRouter.get('/', ensureAuthenticated, leiturasController.getall);
 
+leiturasRouter.get('/usuario', ensureAuthenticated, leiturasController.getallbyusuario);
+
 leiturasRouter.post('/', ensureAuthenticated, leiturasController.create);
 
 leiturasRouter.post('/local', leiturasController.createleiturabycodtag);

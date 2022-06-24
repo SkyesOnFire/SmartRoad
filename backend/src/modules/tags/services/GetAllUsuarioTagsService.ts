@@ -4,15 +4,21 @@ import { injectable, inject } from 'tsyringe';
 import Tag from '../infra/typeorm/entities/Tag';
 import ITagsRepository from '../repositories/ITagsRepository';
 
+interface IRequest {
+  usuario_id: number;
+}
+
 @injectable()
-class GetAllTagsService {
+class GetAllUsuarioTagsService {
   constructor(
     @inject('TagsRepository')
     private tagsRepository: ITagsRepository,
   ) {}
 
-  public async execute(): Promise<Tag[]> {
-    const tags = await this.tagsRepository.findAll();
+  public async execute({
+    usuario_id
+  }: IRequest): Promise<Tag[]> {
+    const tags = await this.tagsRepository.findAllByUsuario(usuario_id);
 
     if (!tags) {
       throw new AppError('Nenhuma tag foi encontrada', 404);
@@ -28,4 +34,4 @@ class GetAllTagsService {
   }
 }
 
-export default GetAllTagsService;
+export default GetAllUsuarioTagsService;

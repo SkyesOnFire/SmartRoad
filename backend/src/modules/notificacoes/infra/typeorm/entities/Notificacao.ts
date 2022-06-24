@@ -1,4 +1,5 @@
 import Tag from '@modules/tags/infra/typeorm/entities/Tag';
+import Usuario from '@modules/usuarios/infra/typeorm/entities/Usuario';
 import {
   Entity,
   Column,
@@ -24,6 +25,12 @@ class Notificacao {
     lazy: true,
   })
   tag: Promise<Tag>;
+
+  @ManyToOne((type) => Usuario, (notificacoes) => Notificacao, {
+    onDelete: 'CASCADE',
+    lazy: true,
+  })
+  usuario: Promise<Usuario>;
 
   @CreateDateColumn()
   created_at: Date;

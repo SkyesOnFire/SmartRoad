@@ -24,6 +24,16 @@ class NotificacoesRepository implements INotificacoesRepository {
     return notificacao;
   }
 
+  public async findAllByUsuario(usuario_id: number): Promise<Notificacao[]> {
+    const notificacoes = await this.ormRepository.find({
+      where: {
+        usuario: usuario_id,
+      },
+    });
+
+    return notificacoes;
+  }
+
   public async findAllByTag(tag_id: string): Promise<Notificacao[]> {
     const notificacoes = await this.ormRepository.find({
       where: {

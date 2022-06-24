@@ -4,18 +4,24 @@ import { injectable, inject } from 'tsyringe';
 import Notificacao from '../infra/typeorm/entities/Notificacao';
 import INotificacoesRepository from '../repositories/INotificacoesRepository';
 
+interface IRequest {
+  usuario_id: number;
+}
+
 @injectable()
-class GetAllNotificacoesService {
+class GetAllUsuarioNotificacoesService {
   constructor(
     @inject('NotificacoesRepository')
     private notificacoesRepository: INotificacoesRepository,
   ) {}
 
-  public async execute(): Promise<Notificacao[]> {
-    const notificacoes = await this.notificacoesRepository.findAll();
+  public async execute({
+    usuario_id
+  }: IRequest): Promise<Notificacao[]> {
+    const notificacoes = await this.notificacoesRepository.findAllByUsuario(usuario_id);
 
     if (!notificacoes) {
-      throw new AppError('Nenhuma notificação foi encontrado', 404);
+      throw new AppError('Nenhuma notificação foi encontrada', 404);
     }
 
     for (let i = 0; i < notificacoes.length; i++) {
@@ -28,4 +34,4 @@ class GetAllNotificacoesService {
   }
 }
 
-export default GetAllNotificacoesService;
+export default GetAllUsuarioNotificacoesService;

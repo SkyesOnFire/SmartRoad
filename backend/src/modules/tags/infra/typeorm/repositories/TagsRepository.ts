@@ -18,6 +18,16 @@ class TagsRepository implements ITagsRepository {
     return tag;
   }
 
+  public async findAllByUsuario(usuario_id: number): Promise<Tag[]> {
+    const tags = await this.ormRepository.find({
+      where: {
+        usuario: usuario_id,
+      },
+    });
+
+    return tags;
+  }
+
   public async findAll(): Promise<Tag[]> {
     const tag = await this.ormRepository.find({ order: { id: 'ASC' } });
 

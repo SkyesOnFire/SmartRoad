@@ -15,6 +15,8 @@ locaisRouter.get(
 
 locaisRouter.get('/', ensureAuthenticated, locaisController.getall);
 
+locaisRouter.get('/usuario', ensureAuthenticated, locaisController.getallbyusuario);
+
 locaisRouter.post('/', ensureAuthenticated, locaisController.create);
 
 locaisRouter.put(
