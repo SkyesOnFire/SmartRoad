@@ -38,33 +38,54 @@ export default class LocaisController {
 
   public async create(req: Request, res: Response): Promise<Response> {
     const {
-      dt_ocorrencia,
-      name,
+      nome,
+      endereco_completo,
+      cidade,
+      estado,
+      latitude,
+      longitude,
     } = req.body;
+
+    const { id: usuario_id } = req.usuario;
 
     const createLocal = container.resolve(CreateLocalService);
 
     const notificacao = await createLocal.execute({
-      dt_ocorrencia,
-      name,
+      nome,
+      endereco_completo,
+      cidade,
+      estado,
+      latitude,
+      longitude,
+      usuario_id,
     });
 
     return res.status(201).json(instanceToPlain(notificacao));
   }
 
   public async update(req: Request, res: Response): Promise<Response> {
-    const { id: notificacao_id } = req.params;
+    const { id: local_id } = req.params;
     const {
-      dt_ocorrencia,
-      tag_id,
+      nome,
+      endereco_completo,
+      cidade,
+      estado,
+      latitude,
+      longitude,
+      usuario_id,
     } = req.body;
 
     const updateLocal = container.resolve(UpdateLocalService);
 
     const notificacao = await updateLocal.execute({
-      notificacao_id: parseInt(notificacao_id),
-      dt_ocorrencia,
-      tag_id,
+      local_id: parseInt(local_id),
+      nome,
+      endereco_completo,
+      cidade,
+      estado,
+      latitude,
+      longitude,
+      usuario_id,
     });
 
     return res.json(instanceToPlain(notificacao));

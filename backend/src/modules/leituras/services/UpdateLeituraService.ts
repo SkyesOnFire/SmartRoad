@@ -5,11 +5,13 @@ import AppError from '@shared/errors/AppError';
 import Leitura from '../infra/typeorm/entities/Leitura';
 import ILeiturasRepository from '../repositories/ILeiturasRepository';
 import ITagsRepository from '@modules/tags/repositories/ITagsRepository';
+import ILocaisRepository from '@modules/locais/repositories/ILocaisRepository';
 
 interface IRequest {
   leitura_id: number;
   dt_ocorrencia?: Date;
   tag_id?: number;
+  local_id?: number;
 }
 
 @injectable()
@@ -20,12 +22,16 @@ class UpdateLeituraService {
 
     @inject('TagsRepository')
     private tagsRepository: ITagsRepository,
+
+    @inject('LocaisRepository')
+    private locaisRepository: ILocaisRepository,
   ) {}
 
   public async execute({
     leitura_id,
     dt_ocorrencia,
     tag_id,
+    local_id,
   }: IRequest): Promise<Leitura> {
     const leitura = await this.leiturasRepository.findById(leitura_id);
 
@@ -44,6 +50,15 @@ class UpdateLeituraService {
       }
 
       leitura.tag = Promise.resolve(tag);
+    }
+    if (local_id) {
+      const local = await this.locaisRepository.findById(local_id);
+
+      if(!local) {
+        throw new AppError('Local não existente', 404);
+      }
+
+      leitura.local = Promise.resolve(local);
     }
 
     await this.leiturasRepository.save(leitura);

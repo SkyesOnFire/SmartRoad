@@ -1,4 +1,5 @@
 import Tag from '@modules/tags/infra/typeorm/entities/Tag';
+import Usuario from '@modules/usuarios/infra/typeorm/entities/Usuario';
 import {
   Entity,
   Column,
@@ -7,6 +8,7 @@ import {
   UpdateDateColumn,
   OneToOne,
   JoinColumn,
+  ManyToOne,
 } from 'typeorm';
 
 @Entity('veiculos')
@@ -36,6 +38,12 @@ class Veiculo {
   })
   @JoinColumn()
   tag?: Tag;
+
+  @ManyToOne((type) => Usuario, (veiculos) => Veiculo, {
+    onDelete: 'CASCADE',
+    lazy: true,
+  })
+  usuario: Promise<Usuario>;
 
   @CreateDateColumn()
   created_at: Date;

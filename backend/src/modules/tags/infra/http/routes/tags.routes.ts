@@ -15,7 +15,7 @@ tagsRouter.get(
 
 tagsRouter.get('/', ensureAuthenticated, tagsController.getall);
 
-tagsRouter.post('/', tagsController.create);
+tagsRouter.post('/', ensureAuthenticated, tagsController.create);
 
 tagsRouter.put(
   '/tag/:id',

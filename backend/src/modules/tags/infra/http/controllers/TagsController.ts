@@ -41,10 +41,13 @@ export default class TagsController {
       cod_tag,
     } = req.body;
 
+    const { id: usuario_id } = req.usuario;
+
     const createTag = container.resolve(CreateTagService);
 
     const tag = await createTag.execute({
       cod_tag: cod_tag,
+      usuario_id,
     });
 
     return res.status(201).json(instanceToPlain(tag));
@@ -54,6 +57,7 @@ export default class TagsController {
     const { id: tag_id } = req.params;
     const {
       cod_tag,
+      usuario_id,
     } = req.body;
 
     const updateTag = container.resolve(UpdateTagService);
@@ -61,6 +65,7 @@ export default class TagsController {
     const tag = await updateTag.execute({
       tag_id: parseInt(tag_id),
       cod_tag,
+      usuario_id,
     });
 
     return res.json(instanceToPlain(tag));

@@ -7,13 +7,12 @@ import AppError from '@shared/errors/AppError';
 import ILocaisRepository from '@modules/locais/repositories/ILocaisRepository';
 
 interface IRequest {
-  dt_ocorrencia?: Date;
-  tag_id: number;
+  tag_name: string;
   local_id: number;
 }
 
 @injectable()
-class CreateLeituraService {
+class CreateLeituraByCodTagService {
   constructor(
     @inject('LeiturasRepository')
     private leiturasRepository: ILeiturasRepository,
@@ -26,11 +25,10 @@ class CreateLeituraService {
   ) {}
 
   public async execute({
-    dt_ocorrencia,
-    tag_id,
+    tag_name,
     local_id,
   }: IRequest): Promise<Leitura> {
-    const tag = await this.tagsRepository.findById(tag_id);
+    const tag = await this.tagsRepository.findByTag(tag_name);
 
     if (!tag) {
       throw new AppError('Tag não existente', 404);
@@ -42,9 +40,7 @@ class CreateLeituraService {
       throw new AppError('Local não existente', 404);
     }
 
-    if (!dt_ocorrencia) {
-      dt_ocorrencia = new Date();
-    }
+    const dt_ocorrencia = new Date();
 
     let leitura = await this.leiturasRepository.create({
       dt_ocorrencia,
@@ -59,4 +55,4 @@ class CreateLeituraService {
   }
 }
 
-export default CreateLeituraService;
+export default CreateLeituraByCodTagService;

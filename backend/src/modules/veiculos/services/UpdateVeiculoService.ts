@@ -1,4 +1,3 @@
-import { hash } from 'bcryptjs';
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
@@ -8,12 +7,12 @@ import ITagsRepository from '@modules/tags/repositories/ITagsRepository';
 
 interface IRequest {
   veiculo_id: number;
-  placa: string;
+  placa?: string;
   renavam?: string;
-  cor: string;
-  marca: string;
-  modelo: string;
-  tag_id?: number;
+  cor?: string;
+  marca?: string;
+  modelo?: string;
+  cod_tag?: string;
 }
 
 @injectable()
@@ -33,7 +32,7 @@ class UpdateVeiculoService {
     cor,
     marca,
     modelo,
-    tag_id,
+    cod_tag,
   }: IRequest): Promise<Veiculo> {
     const veiculo: any = await this.veiculosRepository.findById(veiculo_id);
 
@@ -56,8 +55,8 @@ class UpdateVeiculoService {
     if (modelo) {
       veiculo.modelo = modelo;
     }
-    if (tag_id) {
-      const tag = await this.tagsRepository.findById(tag_id);
+    if (cod_tag) {
+      const tag = await this.tagsRepository.findByTag(cod_tag);
 
       if (!tag) {
         throw new AppError('Tag não existente', 404);

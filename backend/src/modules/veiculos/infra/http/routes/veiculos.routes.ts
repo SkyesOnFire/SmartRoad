@@ -15,7 +15,7 @@ veiculosRouter.get(
 
 veiculosRouter.get('/', ensureAuthenticated, veiculosController.getall);
 
-veiculosRouter.post('/', veiculosController.create);
+veiculosRouter.post('/', ensureAuthenticated, veiculosController.create);
 
 veiculosRouter.put(
   '/veiculo/:id',

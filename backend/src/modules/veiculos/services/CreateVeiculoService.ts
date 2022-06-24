@@ -2,8 +2,6 @@ import { injectable, inject } from 'tsyringe';
 
 import IVeiculosRepository from '../repositories/IVeiculosRepository';
 import Veiculo from '../infra/typeorm/entities/Veiculo';
-import ITagsRepository from '@modules/tags/repositories/ITagsRepository';
-import AppError from '@shared/errors/AppError';
 
 interface IRequest {
   placa: string;
@@ -18,9 +16,6 @@ class CreateVeiculoService {
   constructor(
     @inject('VeiculosRepository')
     private veiculosRepository: IVeiculosRepository,
-
-    @inject('TagsRepository')
-    private tagsRepository: ITagsRepository,
   ) {}
 
   public async execute({

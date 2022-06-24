@@ -17,7 +17,7 @@ class Notificacao {
   dt_ocorrencia: Date;
 
   @Column()
-  name: String;
+  nome: String;
 
   @ManyToOne((type) => Tag, (notificacoes) => Notificacao, {
     onDelete: 'CASCADE',

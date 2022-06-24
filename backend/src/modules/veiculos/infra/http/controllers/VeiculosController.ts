@@ -66,7 +66,7 @@ export default class VeiculosController {
       cor,
       marca,
       modelo,
-      tag_id,
+      cod_tag,
     } = req.body;
 
     const updateVeiculo = container.resolve(UpdateVeiculoService);
@@ -78,7 +78,7 @@ export default class VeiculosController {
       cor,
       marca,
       modelo,
-      tag_id,
+      cod_tag,
     });
 
     return res.json(instanceToPlain(veiculo));
