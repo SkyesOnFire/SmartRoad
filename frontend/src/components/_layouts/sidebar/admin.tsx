@@ -31,7 +31,7 @@ const Sidebar: React.FC<IProps> = props => {
         </NavItem>
         <NavItem
           onClick={() => {
-            history.push('/veiculos');
+            history.push('/tags');
           }}
           type="button"
           id="tags"

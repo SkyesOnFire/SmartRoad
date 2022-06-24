@@ -10,6 +10,10 @@ import Usuarios from 'pages/Cadastros/Internas/Usuarios';
 import NovoUsuario from 'pages/Cadastros/Internas/Usuarios/novo';
 import UsuariosInterna from 'pages/Cadastros/Internas/Usuarios/interna';
 
+import Tags from 'pages/Cadastros/Internas/Tags';
+import NovaTag from 'pages/Cadastros/Internas/Tags/novo';
+import TagsInterna from 'pages/Cadastros/Internas/Tags/interna';
+
 import Dashboard from 'pages/Dashboard';
 
 import Route from './Route';
@@ -36,6 +40,10 @@ const Routes: React.FC = () => (
       component={UsuariosInterna}
       isPrivate
     />
+    {/* ------ */}
+    <Route path="/tags" exact component={Tags} isPrivate />
+    <Route path="/tags/novo" exact component={NovaTag} isPrivate />
+    <Route path="/tags/tag/:id" exact component={TagsInterna} isPrivate />
 
     <Route component={Pag404} isPrivate />
   </Switch>

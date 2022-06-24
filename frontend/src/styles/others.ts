@@ -9,7 +9,7 @@ export const ListHolder = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
 
-  div.container {
+  div.boxContainer {
     padding: 15px;
   }
 `;
