@@ -24,7 +24,7 @@ class LeiturasRepository implements ILeiturasRepository {
       .leftJoinAndSelect('leitura.tag', 'tag')
       .where(`tag.usuarioId = ${usuario_id}`)
       .orderBy({
-        "id": "ASC"
+        "tag.id": "ASC"
       })
       .getMany();
 

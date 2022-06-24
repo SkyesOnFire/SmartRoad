@@ -14,6 +14,9 @@ import { CChartLine } from '@coreui/react-chartjs';
 import { getStyle, hexToRgba } from '@coreui/utils';
 import CIcon from '@coreui/icons-react';
 import { cilCloudDownload } from '@coreui/icons';
+import Listagem, { IRow } from 'components/Listagem';
+import { ListHolder } from 'pages/Cadastros/styles';
+import BoxContainer from 'components/BoxContainer';
 import { Container } from './styles';
 import WidgetsDropdown from './widgets/WidgetsDropdown';
 
@@ -43,6 +46,25 @@ const Inicio: React.FC = () => {
       value: 'Porcentagem de Acidentes',
       percent: 40.15,
       color: 'primary',
+    },
+  ];
+
+  const rows: IRow[] = [
+    {
+      label: '#',
+      data: 'id',
+    },
+    {
+      label: 'Data',
+      data: 'dt_ocorrencia',
+    },
+    {
+      label: 'Tag',
+      data: '__tag__.cod_tag',
+    },
+    {
+      label: 'Local',
+      data: '__local__.nome',
     },
   ];
 
@@ -190,6 +212,15 @@ const Inicio: React.FC = () => {
           </CRow>
         </CCardFooter>
       </CCard>
+      <ListHolder style={{ border: '1px solid #efefef' }}>
+        <Listagem
+          rows={rows}
+          module="tags"
+          template="100px 1fr 1fr 1fr"
+          getUrl="/leituras/usuario"
+          indexUrl="/tags/tag"
+        />
+      </ListHolder>
     </Container>
   );
 };
