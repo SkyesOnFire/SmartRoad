@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-await-in-loop */
+import React, { useCallback, useEffect, useState } from 'react';
 
 import {
   CButton,
@@ -17,6 +18,11 @@ import { cilCloudDownload } from '@coreui/icons';
 import Listagem, { IRow } from 'components/Listagem';
 import { ListHolder } from 'pages/Cadastros/styles';
 import BoxContainer from 'components/BoxContainer';
+import api from 'services/api';
+import { AxiosError, AxiosResponse } from 'axios';
+import ListagemNoGet from 'components/Listagem/no-get';
+import { formatDateWithHour } from 'utils/formatData';
+import { useToast } from 'hooks/toast';
 import { Container } from './styles';
 import WidgetsDropdown from './widgets/WidgetsDropdown';
 
@@ -25,6 +31,57 @@ import '@coreui/coreui/dist/css/coreui.min.css';
 const Inicio: React.FC = () => {
   const random = (min: any, max: any) =>
     Math.floor(Math.random() * (max - min + 1) + min);
+
+  const [loading, setLoading] = useState<boolean>(false);
+  const [leituras, setLeitura] = useState<any[]>([]);
+  const { addToast } = useToast();
+
+  function delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  const getLeituras = useCallback(async () => {
+    setLoading(true);
+
+    while (true) {
+      await api
+        .get('/leituras')
+        .then(async (res: AxiosResponse) => {
+          if (leituras.length !== res.data.length) {
+            const data = [];
+            for (let i = 0; i < res.data.length; i++) {
+              const el = res.data[i];
+
+              el.dt_ocorrencia = formatDateWithHour(el.dt_ocorrencia);
+
+              data.push(el);
+            }
+            setLeitura(data);
+          }
+        })
+        .catch((err: AxiosError) => {
+          addToast({
+            type: 'error',
+            title:
+              typeof err.response?.data.message === 'string'
+                ? err.response?.data.message
+                : 'Ocorreu um erro',
+            description: `Ocorreu um erro ao buscar as leituras, tente novamente.`,
+          });
+          console.error(`Erro: ${err}`);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+
+      await delay(1000);
+    }
+  }, [leituras.length]);
+
+  useEffect(() => {
+    getLeituras();
+  }, [getLeituras]);
 
   const progressExample = [
     {
@@ -213,13 +270,19 @@ const Inicio: React.FC = () => {
         </CCardFooter>
       </CCard>
       <ListHolder style={{ border: '1px solid #efefef' }}>
-        <Listagem
-          rows={rows}
-          module="tags"
-          template="100px 1fr 1fr 1fr"
-          getUrl="/leituras/usuario"
-          indexUrl="/tags/tag"
-        />
+        {loading ? (
+          'Carregando...'
+        ) : (
+          <ListagemNoGet
+            data={leituras}
+            indexUrl="/"
+            module="leitura"
+            template="100px 1fr 1fr 1fr"
+            deleteUrl="/leituras/leitura"
+            rows={rows}
+            loading={loading}
+          />
+        )}
       </ListHolder>
     </Container>
   );
