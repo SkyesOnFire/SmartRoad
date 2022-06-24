@@ -29,6 +29,9 @@ class NotificacoesRepository implements INotificacoesRepository {
       where: {
         usuario: usuario_id,
       },
+      order: {
+        id: 'ASC'
+      }
     });
 
     return notificacoes;

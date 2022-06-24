@@ -29,6 +29,9 @@ class VeiculosRepository implements IVeiculosRepository {
       where: {
         usuario: usuario_id,
       },
+      order: {
+        id: 'ASC'
+      }
     });
 
     return veiculos;

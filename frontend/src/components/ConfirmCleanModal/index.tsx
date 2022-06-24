@@ -103,7 +103,7 @@ const ConfirmCleanModal: React.FC<IModalAttatchment> = props => {
         footer={false}
         confirmLoading={false}
         onCancel={handleCancel}
-        className="modal error"
+        className="modalAntd error"
         wrapClassName="wrapForm"
       >
         <Title>Confirmação</Title>

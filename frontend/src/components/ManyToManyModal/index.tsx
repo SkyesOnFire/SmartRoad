@@ -258,7 +258,7 @@ const ManyToManyModal: React.FC<IModalAttatchment> = props => {
         footer={false}
         confirmLoading={false}
         onCancel={handleCancel}
-        className="modal secundary"
+        className="modalAntd secundary"
         wrapClassName="wrapForm"
       >
         <Title>Gerenciar os {relation}</Title>

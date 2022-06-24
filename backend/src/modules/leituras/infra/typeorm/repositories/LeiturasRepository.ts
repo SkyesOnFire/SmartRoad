@@ -23,6 +23,9 @@ class LeiturasRepository implements ILeiturasRepository {
       .createQueryBuilder('leitura')
       .leftJoinAndSelect('leitura.tag', 'tag')
       .where(`tag.usuarioId = ${usuario_id}`)
+      .orderBy({
+        "id": "ASC"
+      })
       .getMany();
 
     return leituras;

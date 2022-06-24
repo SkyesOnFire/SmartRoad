@@ -16,7 +16,6 @@ import CIcon from '@coreui/icons-react';
 import { cilCloudDownload } from '@coreui/icons';
 import { Container } from './styles';
 import WidgetsDropdown from './widgets/WidgetsDropdown';
-import WidgetsBrand from './widgets/WidgetsBrand';
 
 import '@coreui/coreui/dist/css/coreui.min.css';
 
@@ -191,8 +190,6 @@ const Inicio: React.FC = () => {
           </CRow>
         </CCardFooter>
       </CCard>
-
-      <WidgetsBrand withCharts />
     </Container>
   );
 };

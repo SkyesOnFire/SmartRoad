@@ -133,7 +133,7 @@ export default createGlobalStyle`
 `;
 
 export const ModalStyle = createGlobalStyle`
-  .modal {
+  .modalAntd {
     width: 60% !important;
     @media (max-width: 768px) {
       width: 90% !important;

@@ -23,6 +23,9 @@ class LocaisRepository implements ILocaisRepository {
       where: {
         usuario: usuario_id,
       },
+      order: {
+        id: 'ASC'
+      }
     });
 
     return locais;
