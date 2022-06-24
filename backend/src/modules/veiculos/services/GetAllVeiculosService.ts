@@ -15,7 +15,7 @@ class GetAllVeiculosService {
     const veiculos = await this.veiculosRepository.findAll();
 
     if (!veiculos) {
-      throw new AppError('Nenhum usuário foi encontrado', 404);
+      throw new AppError('Nenhum veículo foi encontrado', 404);
     }
 
     for (let i = 0; i < veiculos.length; i++) {

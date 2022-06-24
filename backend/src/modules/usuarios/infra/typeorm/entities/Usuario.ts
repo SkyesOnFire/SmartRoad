@@ -4,9 +4,14 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 
 import { Exclude } from 'class-transformer';
+import Local from '@modules/locais/infra/typeorm/entities/Local';
+import Tag from '@modules/tags/infra/typeorm/entities/Tag';
+import Veiculo from '@modules/veiculos/infra/typeorm/entities/Veiculo';
+import Notificacao from '@modules/notificacoes/infra/typeorm/entities/Notificacao';
 
 @Entity('usuarios')
 class Usuario {
@@ -32,6 +37,30 @@ class Usuario {
 
   @Column({ default: 'Inicial' })
   des_perfil: string;
+
+  @OneToMany((type) => Local, (usuario) => Usuario, {
+    onDelete: 'CASCADE',
+    nullable: true,
+  })
+  locais?: Local[];
+
+  @OneToMany((type) => Tag, (usuario) => Usuario, {
+    onDelete: 'CASCADE',
+    nullable: true,
+  })
+  tags?: Tag[];
+
+  @OneToMany((type) => Veiculo, (usuario) => Usuario, {
+    onDelete: 'CASCADE',
+    nullable: true,
+  })
+  veiculos?: Veiculo[];
+
+  @OneToMany((type) => Notificacao, (usuario) => Usuario, {
+    onDelete: 'CASCADE',
+    nullable: true,
+  })
+  notificacoes?: Notificacao[];
 
   @CreateDateColumn()
   created_at: Date;

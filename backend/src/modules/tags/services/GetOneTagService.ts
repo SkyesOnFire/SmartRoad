@@ -15,8 +15,10 @@ class GetOneTagService {
     const tag: any = await this.tagsRepository.findById(tag_id);
 
     if (!tag) {
-      throw new AppError('Usuário não encontrado', 404);
+      throw new AppError('Tag não encontrada', 404);
     }
+
+    tag.usuario = await tag.usuario;
 
     return tag;
   }

@@ -1,3 +1,4 @@
+import AppError from '@shared/errors/AppError';
 import { Request, Response } from 'express';
 import { instanceToPlain } from 'class-transformer';
 
@@ -8,6 +9,8 @@ import GetAllLeiturasService from '@modules/leituras/services/GetAllLeiturasServ
 import UpdateLeituraService from '@modules/leituras/services/UpdateLeituraService';
 import CreateLeituraService from '@modules/leituras/services/CreateLeituraService';
 import DeleteLeituraService from '@modules/leituras/services/DeleteLeituraService';
+import CreateLeituraByCodTagService from '@modules/leituras/services/CreateLeituraByCodTagService';
+import GetAllUsuarioLeiturasService from '@modules/leituras/services/GetAllUsuarioLeiturasService';
 
 export default class LeiturasController {
   public async getone(req: Request, res: Response): Promise<Response> {
@@ -29,6 +32,13 @@ export default class LeiturasController {
     return res.json(instanceToPlain(leitura));
   }
 
+  public async getallbyusuario(req: Request, res: Response): Promise<Response> {
+    const getAllUsuarioLeituras = container.resolve(GetAllUsuarioLeiturasService);
+    const leituras = await getAllUsuarioLeituras.execute({ usuario_id: req.usuario.id });
+
+    return res.json(instanceToPlain(leituras));
+  }
+
   public async getall(req: Request, res: Response): Promise<Response> {
     const getAllLeituras = container.resolve(GetAllLeiturasService);
     const leituras = await getAllLeituras.execute();
@@ -40,6 +50,7 @@ export default class LeiturasController {
     const {
       dt_ocorrencia,
       tag_id,
+      local_id,
     } = req.body;
 
     const createLeitura = container.resolve(CreateLeituraService);
@@ -47,6 +58,24 @@ export default class LeiturasController {
     const leitura = await createLeitura.execute({
       dt_ocorrencia,
       tag_id,
+      local_id,
+    });
+
+    return res.status(201).json(instanceToPlain(leitura));
+  }
+
+  public async createleiturabycodtag(req: Request, res: Response): Promise<Response> {
+    const { tag_name, local_id }: any = req.query;
+
+    if (!tag_name || !local_id) {
+      throw new AppError("Faltando nome da tag ou id do local faltando.", 403)
+    }
+
+    const createLeituraByCodTag = container.resolve(CreateLeituraByCodTagService);
+
+    const leitura = await createLeituraByCodTag.execute({
+      tag_name,
+      local_id: parseInt(local_id),
     });
 
     return res.status(201).json(instanceToPlain(leitura));
@@ -57,6 +86,7 @@ export default class LeiturasController {
     const {
       dt_ocorrencia,
       tag_id,
+      local_id,
     } = req.body;
 
     const updateLeitura = container.resolve(UpdateLeituraService);
@@ -65,6 +95,7 @@ export default class LeiturasController {
       leitura_id: parseInt(leitura_id),
       dt_ocorrencia,
       tag_id,
+      local_id,
     });
 
     return res.json(instanceToPlain(leitura));

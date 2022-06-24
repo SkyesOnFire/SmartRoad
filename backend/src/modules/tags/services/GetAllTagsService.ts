@@ -15,7 +15,13 @@ class GetAllTagsService {
     const tags = await this.tagsRepository.findAll();
 
     if (!tags) {
-      throw new AppError('Nenhum usuário foi encontrado', 404);
+      throw new AppError('Nenhuma tag foi encontrada', 404);
+    }
+
+    for (let i = 0; i < tags.length; i++) {
+      const tag: any = tags[i];
+
+      tag.usuario = await tag.usuario;
     }
 
     return tags;

@@ -5,11 +5,13 @@ import AppError from '@shared/errors/AppError';
 import Notificacao from '../infra/typeorm/entities/Notificacao';
 import INotificacoesRepository from '../repositories/INotificacoesRepository';
 import ITagsRepository from '@modules/tags/repositories/ITagsRepository';
+import IUsuariosRepository from '@modules/usuarios/repositories/IUsuariosRepository';
 
 interface IRequest {
   notificacao_id: number;
   dt_ocorrencia?: Date;
   tag_id?: number;
+  usuario_id?: number;
 }
 
 @injectable()
@@ -20,12 +22,16 @@ class UpdateNotificacaoService {
 
     @inject('TagsRepository')
     private tagsRepository: ITagsRepository,
+
+    @inject('UsuariosRepository')
+    private usuariosRepository: IUsuariosRepository,
   ) {}
 
   public async execute({
     notificacao_id,
     dt_ocorrencia,
     tag_id,
+    usuario_id,
   }: IRequest): Promise<Notificacao> {
     const notificacao = await this.notificacoesRepository.findById(notificacao_id);
 
@@ -44,6 +50,15 @@ class UpdateNotificacaoService {
       }
 
       notificacao.tag = Promise.resolve(tag);
+    }
+    if (usuario_id) {
+      const usuario = await this.usuariosRepository.findById(usuario_id);
+
+      if (!usuario) {
+        throw new AppError("Usuário não existente", 404);
+      }
+
+      notificacao.usuario = Promise.resolve(usuario);
     }
 
     await this.notificacoesRepository.save(notificacao);

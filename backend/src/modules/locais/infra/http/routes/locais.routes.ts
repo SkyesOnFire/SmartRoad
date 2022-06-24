@@ -8,23 +8,25 @@ const locaisRouter = Router();
 const locaisController = new LocaisController();
 
 locaisRouter.get(
-  '/notificacao/:id',
+  '/local/:id',
   ensureAuthenticated,
   locaisController.getone,
 );
 
 locaisRouter.get('/', ensureAuthenticated, locaisController.getall);
 
-locaisRouter.post('/', locaisController.create);
+locaisRouter.get('/usuario', ensureAuthenticated, locaisController.getallbyusuario);
+
+locaisRouter.post('/', ensureAuthenticated, locaisController.create);
 
 locaisRouter.put(
-  '/notificacao/:id',
+  '/local/:id',
   ensureAuthenticated,
   locaisController.update,
 );
 
 locaisRouter.delete(
-  '/notificacao/:id',
+  '/local/:id',
   ensureAuthenticated,
   locaisController.delete,
 );

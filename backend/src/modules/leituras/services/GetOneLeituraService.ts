@@ -15,9 +15,10 @@ class GetOneLeituraService {
     const leitura: any = await this.leiturasRepository.findById(leitura_id);
 
     if (!leitura) {
-      throw new AppError('Usuário não encontrado', 404);
+      throw new AppError('Leitura não encontrada', 404);
     }
 
+    leitura.local = await leitura.local;
     leitura.tag = await leitura.tag;
 
     return leitura;
